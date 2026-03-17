@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Japan | Cinematic Experience</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Inter,sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#070707;
+color:white;
+overflow-x:hidden;
+}
+
+/* glowing cursor */
+
+.cursor{
+position:fixed;
+width:300px;
+height:300px;
+background:radial-gradient(circle,#BC002D55,transparent);
+border-radius:50%;
+pointer-events:none;
+transform:translate(-50%,-50%);
+z-index:1;
+}
+
+/* cherry blossom */
+
+.petal{
+position:fixed;
+top:-10px;
+font-size:18px;
+animation:fall linear infinite;
+}
+
+@keyframes fall{
+0%{transform:translateY(-10vh) rotate(0deg)}
+100%{transform:translateY(110vh) rotate(360deg)}
+}
+
+/* navbar */
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+padding:20px 60px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(18px);
+z-index:10;
+}
+
+nav h1{
+letter-spacing:3px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:30px;
+}
+
+/* hero */
+
+.hero{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+position:relative;
+}
+
+.hero video{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-1;
+}
+
+.hero h2{
+font-size:70px;
+max-width:700px;
+}
+
+.hero span{
+color:#BC002D;
+}
+
+/* sections */
+
+.section{
+padding:160px 10%;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:80px;
+align-items:center;
+}
+
+.section img{
+width:100%;
+border-radius:20px;
+transition:.6s;
+}
+
+.section img:hover{
+transform:scale(1.05);
+}
+
+.section h3{
+font-size:45px;
+margin-bottom:20px;
+}
+
+.section p{
+opacity:.75;
+line-height:1.7;
+}
+
+/* culture gallery */
+
+.temple-gallery{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+margin-top:30px;
+}
+
+.temple-gallery img{
+width:100%;
+border-radius:15px;
+transition:.5s;
+}
+
+.temple-gallery img:hover{
+transform:scale(1.1);
+}
+
+/* grid */
+
+.grid{
+padding:150px 10%;
+text-align:center;
+}
+
+.grid h2{
+font-size:55px;
+margin-bottom:70px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:40px;
+}
+
+.card{
+position:relative;
+height:380px;
+border-radius:20px;
+overflow:hidden;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(18px);
+}
+
+.card img{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+transition:.5s;
+}
+
+.card:hover img{
+transform:scale(1.1);
+}
+
+.card span{
+position:absolute;
+bottom:20px;
+left:20px;
+font-size:22px;
+}
+
+/* gallery */
+
+.gallery{
+padding:150px 10%;
+}
+
+.gallery img{
+width:100%;
+border-radius:20px;
+margin-bottom:50px;
+}
+
+/* CTA */
+
+.cta{
+height:60vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+.cta h2{
+font-size:60px;
+margin-bottom:20px;
+}
+
+.cta a{
+padding:16px 40px;
+border-radius:40px;
+background:#BC002D;
+color:white;
+text-decoration:none;
+}
+
+/* reveal animation */
+
+.reveal{
+opacity:0;
+transform:translateY(80px);
+transition:1s;
+}
+
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="cursor"></div>
+
+<nav>
+<h1>JAPAN</h1>
+<div>
+<a href="#nature">Nature</a>
+<a href="#culture">Culture</a>
+<a href="#city">Cities</a>
+</div>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<video autoplay muted loop>
+<source src="https://cdn.coverr.co/videos/coverr-tokyo-street-night-4203/1080p.mp4">
+</video>
+
+<h2>Discover the <span>Beauty</span> of Japan</h2>
+
+</section>
+
+<!-- NATURE -->
+
+<section class="section reveal" id="nature">
+
+<img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1200&q=80">
+
+<div>
+<h3>Timeless Nature</h3>
+
+<p>
+Mount Fuji and cherry blossom forests create some of the most breathtaking landscapes on Earth.
+</p>
+
+</div>
+
+</section>
+
+<!-- CULTURE -->
+
+<section class="section reveal" id="culture">
+
+<div>
+
+<h3>Ancient Culture</h3>
+
+<p>
+Japan’s culture is shaped by centuries of temples,
+shrines and traditions that continue to inspire the world.
+</p>
+
+<div class="temple-gallery">
+
+<img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?auto=format&fit=crop&w=800&q=80">
+
+<img src="https://images.unsplash.com/photo-1504788363733-507549153474?auto=format&fit=crop&w=800&q=80">
+
+<img src="https://images.unsplash.com/photo-1495567720989-cebdbdd97913?auto=format&fit=crop&w=800&q=80">
+
+</div>
+
+</div>
+
+<img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=1200&q=80">
+
+</section>
+
+<!-- CITY -->
+
+<section class="section reveal" id="city">
+
+<img src="https://images.unsplash.com/photo-1549692520-acc6669e2f0c?auto=format&fit=crop&w=1200&q=80">
+
+<div>
+<h3>Urban Energy</h3>
+
+<p>
+Tokyo’s neon streets and futuristic architecture create one of the most exciting cities in the world.
+</p>
+
+</div>
+
+</section>
+
+<!-- GRID -->
+
+<section class="grid reveal">
+
+<h2>Explore Japan</h2>
+
+<div class="cards">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1200&q=80">
+<span>Mount Fuji</span>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1504788363733-507549153474?auto=format&fit=crop&w=1200&q=80">
+<span>Kyoto</span>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?auto=format&fit=crop&w=1200&q=80">
+<span>Cherry Blossoms</span>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1549692520-acc6669e2f0c?auto=format&fit=crop&w=1200&q=80">
+<span>Tokyo</span>
+</div>
+
+</div>
+
+</section>
+
+<!-- CTA -->
+
+<section class="cta">
+
+<h2>Begin Your Journey</h2>
+
+<a href="#">Explore Japan</a>
+
+</section>
+
+<script>
+
+/* cursor glow */
+
+const cursor=document.querySelector(".cursor")
+
+document.addEventListener("mousemove",(e)=>{
+cursor.style.left=e.clientX+"px"
+cursor.style.top=e.clientY+"px"
+})
+
+/* reveal animation */
+
+function reveal(){
+
+document.querySelectorAll(".reveal").forEach(el=>{
+
+const windowHeight=window.innerHeight
+const elementTop=el.getBoundingClientRect().top
+
+if(elementTop<windowHeight-120){
+el.classList.add("active")
+}
+
+})
+
+}
+
+window.addEventListener("scroll",reveal)
+
+/* cherry blossoms */
+
+for(let i=0;i<20;i++){
+
+let petal=document.createElement("div")
+petal.classList.add("petal")
+petal.innerHTML="🌸"
+
+petal.style.left=Math.random()*100+"vw"
+petal.style.animationDuration=5+Math.random()*10+"s"
+
+document.body.appendChild(petal)
+
+}
+
+</script>
+
+</body>
+</html>
