@@ -153,3 +153,9 @@ pipeline {
 * Add monitoring using CloudWatch
 
 ---
+## 🌐 Live Demo
+
+The project was successfully deployed using AWS S3 and CloudFront.  
+Due to cost optimization, the live deployment has been removed.  
+
+Please refer to the screenshots and demo video for proof of deployment.
