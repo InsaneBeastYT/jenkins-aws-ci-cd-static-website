@@ -1,16 +1,3 @@
-#  Automated CI/CD Pipeline using Jenkins & AWS
-
-## 📌 Project Overview
-
-This project demonstrates a complete CI/CD pipeline that automates the deployment of a static website using Jenkins and AWS services.
-
-The pipeline fetches code from GitHub, deploys it to AWS S3, and distributes it globally using CloudFront.
-
----
-#  Automated CI/CD Pipeline using Jenkins & AWS
-
----
-
 ## 📌 Project Overview
 
 This project demonstrates a complete **CI/CD pipeline** that automates the deployment of a static website using **Jenkins and AWS services**.
