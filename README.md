@@ -1,10 +1,21 @@
-# 🚀 Automated CI/CD Pipeline using Jenkins & AWS
+#  Automated CI/CD Pipeline using Jenkins & AWS
 
 ## 📌 Project Overview
 
 This project demonstrates a complete CI/CD pipeline that automates the deployment of a static website using Jenkins and AWS services.
 
 The pipeline fetches code from GitHub, deploys it to AWS S3, and distributes it globally using CloudFront.
+
+---
+#  Automated CI/CD Pipeline using Jenkins & AWS
+
+---
+
+## 📌 Project Overview
+
+This project demonstrates a complete **CI/CD pipeline** that automates the deployment of a static website using **Jenkins and AWS services**.
+
+The pipeline fetches code from GitHub, deploys it to **AWS S3**, and delivers it globally using **CloudFront CDN**.
 
 ---
 
@@ -38,10 +49,13 @@ GitHub → Jenkins → EC2 Agent → S3 Bucket → CloudFront → End User
 
 ---
 
-## 📸 Screenshots
+##  Screenshots
+
 ### ✅ Final Website Output
 
 ![Website](screenshots/website.png)
+
+---
 
 ### ✅ Jenkins Pipeline Success
 
@@ -67,24 +81,21 @@ GitHub → Jenkins → EC2 Agent → S3 Bucket → CloudFront → End User
 
 ---
 
+##  Implementation Steps
 
+### 🔹 Step 1: Launch EC2 Instance
+
+* Launch Amazon Linux EC2 instance
+* Open ports:
+
+  * 22 (SSH)
+  * 8080 (Jenkins)
 
 ---
 
+### 🔹 Step 2: Install Jenkins
 
----
-
-🔹 Step 1: Launch EC2 Instance
-
-Launch Amazon Linux EC2
-
-Open ports:
-
-22 (SSH)
-
-8080 (Jenkins)
-
-🔹 Step 2: Install Jenkins
+```bash
 sudo yum update -y
 sudo yum install java-17-amazon-corretto -y
 sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
@@ -92,53 +103,68 @@ sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
 sudo yum install jenkins -y
 sudo systemctl start jenkins
 sudo systemctl enable jenkins
-🔹 Step 3: Setup Jenkins
+```
 
-Access Jenkins via:
+---
 
+### 🔹 Step 3: Setup Jenkins
+
+Access Jenkins:
+
+```
 http://<EC2-IP>:8080
+```
 
 Unlock using:
 
+```bash
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
-🔹 Step 4: Attach Extra Storage (EBS)
+```
 
-Create EBS volume
+---
 
-Attach to EC2 (/dev/xvdb)
+### 🔹 Step 4: Attach Extra Storage (EBS)
+
+* Create EBS volume
+* Attach to EC2 (`/dev/xvdb`)
 
 Mount:
 
+```bash
 sudo mkfs -t xfs /dev/xvdb
 sudo mount /dev/xvdb /tmp
+```
 
-👉 Fixes disk space issue
+ Fixes disk space issue
 
-🔹 Step 5: Create S3 Bucket
+---
 
-Enable static website hosting
+### 🔹 Step 5: Create S3 Bucket
 
-Upload files OR use Jenkins
+* Enable static website hosting
+* Disable block public access
+* Add bucket policy for public read access
 
-Disable block public access
+---
 
-Add bucket policy (public read)
+### 🔹 Step 6: Create CloudFront Distribution
 
-🔹 Step 6: Create CloudFront Distribution
+* Set origin → S3 bucket
+* Set default root object → `index.html`
+* Wait for deployment
 
-Origin → S3 bucket
+---
 
-Default root object → index.html
+### 🔹 Step 7: Setup Jenkins Pipeline
 
-Wait for deployment
+* Create a new pipeline job
+* Connect GitHub repository
 
-🔹 Step 7: Setup Jenkins Pipeline
+---
 
-Create new pipeline
+### 🔹 Step 8: Jenkinsfile
 
-Connect GitHub repo
-
-🔹 Step 8: Jenkinsfile
+```groovy
 pipeline {
     agent { label 'agent-1' }
 
@@ -175,21 +201,22 @@ pipeline {
         }
     }
 }
-🔹 Step 9: Setup Jenkins Agent (EC2)
+```
 
-Create new node
+---
 
-Add SSH credentials (PEM key)
+### 🔹 Step 9: Setup Jenkins Agent (EC2)
 
-Set:
+* Create a new node in Jenkins
+* Add SSH credentials using PEM key
+* Configure:
 
-Launch agents via SSH
+  * Launch agents via SSH
+  * Host key verification → **Non-verifying strategy**
 
-Fix verification:
+---
 
-Non verifying strategy
-
-## 💡 Key Features
+##  Key Features
 
 * Fully automated deployment pipeline
 * Global content delivery using CDN
@@ -198,36 +225,40 @@ Non verifying strategy
 
 ---
 
-## 🧠 Challenges Faced & Solutions
+##  Challenges Faced & Solutions
 
 * Disk space issue in Jenkins → Fixed using EBS volume
-* SSH connection failure → Fixed using correct PEM key and configuration
-* Jenkins agent not connecting → Fixed SSH and verification strategy
-* CloudFront DNS delay → Waited for propagation
-* 404 Error → Fixed by placing index.html in root of S3
+* SSH connection failure → Fixed using correct PEM key
+* Jenkins agent connection issue → Fixed SSH configuration
+* CloudFront DNS delay → Resolved after propagation
+* 404 Error → Fixed by placing `index.html` in root of S3
 
 ---
 
-## 🎯 Learning Outcomes
+##  Learning Outcomes
 
-* CI/CD pipeline creation
+* CI/CD pipeline implementation
 * AWS services integration
 * Debugging real-world infrastructure issues
-* Automation of deployment process
+* Automation of deployment workflows
 
 ---
 
-## 🚀 Future Improvements
+##  Future Improvements
 
-* Add GitHub Webhooks for automatic triggers
+* Add GitHub Webhooks for auto-trigger
 * Use Docker for containerization
 * Enable HTTPS using AWS ACM
 * Add monitoring using CloudWatch
 
 ---
-## 🌐 Live Demo
 
-The project was successfully deployed using AWS S3 and CloudFront.  
-Due to cost optimization, the live deployment has been removed.  
+##  Live Demo
 
-Please refer to the screenshots and demo video for proof of deployment.
+The project was successfully deployed using AWS S3 and CloudFront.
+Due to cost optimization, the live deployment has been removed.
+
+👉 Please refer to the screenshots and demo video for proof of deployment.
+
+---
+
