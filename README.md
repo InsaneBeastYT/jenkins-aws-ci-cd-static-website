@@ -71,9 +71,6 @@ GitHub → Jenkins → EC2 Agent → S3 Bucket → CloudFront → End User
 
 ---
 
-## 🌐 Live Demo
-
-👉 https://dxsaguv0nlvfr.cloudfront.net
 
 ---
 
