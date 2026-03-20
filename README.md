@@ -11,7 +11,7 @@ The pipeline fetches code from GitHub, deploys it to **AWS S3**, and delivers it
 ```
 GitHub → Jenkins → EC2 Agent → S3 Bucket → CloudFront → End User
 ```
-(screenshots/Architecture.png)
+![Website](screenshots/Architecture.png)
 
 ---
 
