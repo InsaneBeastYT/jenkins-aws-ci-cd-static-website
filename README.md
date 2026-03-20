@@ -8,10 +8,47 @@ The pipeline fetches code from GitHub, deploys it to **AWS S3**, and delivers it
 
 ## 🏗️ Architecture
 
+```                ┌──────────────┐
+                │   Developer  │
+                └──────┬───────┘
+                       │ Push Code
+                       ▼
+                ┌──────────────┐
+                │   GitHub     │
+                └──────┬───────┘
+                       │ Webhook Trigger
+                       ▼
+        ┌────────────────────────────┐
+        │        Jenkins Server      │
+        │ (CI/CD Pipeline on EC2)    │
+        └──────┬───────────┬────────┘
+               │           │
+       Build & Test   Deploy Artifacts
+               │           │
+               ▼           ▼
+        ┌──────────────┐   │
+        │ EC2 Agent    │   │
+        │ (Execution)  │   │
+        └──────┬───────┘   │
+               │ Upload     │
+               ▼            │
+        ┌──────────────┐    │
+        │   S3 Bucket  │◄───┘
+        │ Static Host  │
+        └──────┬───────┘
+               │ Origin
+               ▼
+        ┌──────────────┐
+        │ CloudFront   │
+        │ CDN Delivery │
+        └──────┬───────┘
+               │
+               ▼
+        ┌──────────────┐
+        │   End User   │
+        └──────────────┘
 ```
-GitHub → Jenkins → EC2 Agent → S3 Bucket → CloudFront → End User
-```
-![Website](screenshots/Architecture.png)
+
 
 ---
 
